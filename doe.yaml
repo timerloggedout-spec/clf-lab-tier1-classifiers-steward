@@ -1,6 +1,6 @@
 schema: clf-lab-doe/v1
 family: tier1-classifiers-steward
-generation: 1
+generation: 2
 data_sha: null
 design: fractional-factorial
 design_note: '1/3 fraction: (feature_idx + layer_idx) mod 3 = model_idx mod 3'
@@ -37,6 +37,7 @@ factors:
           - 0.1
           - 0.5
           - 2.0
+          - 8.0
           min: 0.001
           max: 1000
       nb:
@@ -92,6 +93,7 @@ factors:
           - 4
           - 5
           - 6
+          - 7
           min: 3
           max: 7
           int: true
@@ -110,107 +112,109 @@ factors:
     - dedup
     - augmented
 cells:
-- model: logreg
-  model_level:
-    C: 0.3
-  features: tfidf-char
-  features_level:
-    ngram_max: 5
-  layer: augmented
-  id: g1-logreg-tfidf-char-augmented-1680a1
 - model: linear-svm
   model_level:
     C: 2.0
-  features: tfidf-char
-  features_level:
-    ngram_max: 5
-  layer: raw
-  id: g1-linear-svm-tfidf-char-raw-0d65ff
-- model: logreg
-  model_level:
-    C: 1.0
   features: tfidf-word
   features_level:
     ngram_max: 2
-  layer: augmented
-  id: g1-logreg-tfidf-word-augmented-956680
-- model: linear-svm
-  model_level:
-    C: 0.5
-  features: tfidf-char
-  features_level:
-    ngram_max: 4
   layer: raw
-  id: g1-linear-svm-tfidf-char-raw-ec07dd
-- model: logreg
-  model_level:
-    C: 1.0
-  features: tfidf-word
-  features_level:
-    ngram_max: 2
-  layer: dedup
-  id: g1-logreg-tfidf-word-dedup-574487
-- model: logreg
-  model_level:
-    C: 1.0
-  features: tfidf-word
-  features_level:
-    ngram_max: 1
-  layer: raw
-  id: g1-logreg-tfidf-word-raw-85e21f
-- model: logreg
-  model_level:
-    C: 1.0
-  features: tfidf-char
-  features_level:
-    ngram_max: 4
-  layer: augmented
-  id: g1-logreg-tfidf-char-augmented-6e8694
-- model: linear-svm
-  model_level:
-    C: 0.5
-  features: tfidf-char
-  features_level:
-    ngram_max: 5
-  layer: augmented
-  id: g1-linear-svm-tfidf-char-augmented-fe5073
-- model: linear-svm
-  model_level:
-    C: 0.5
-  features: hashing
-  features_level:
-    log2_features: 16
-  layer: raw
-  id: g1-linear-svm-hashing-raw-f6e89e
+  id: g2-linear-svm-tfidf-word-raw-af2ab2
 - model: linear-svm
   model_level:
     C: 0.5
   features: tfidf-char
   features_level:
     ngram_max: 6
-  layer: raw
-  id: g1-linear-svm-tfidf-char-raw-3c9489
-- model: small-gbm
-  model_level:
-    lr: 0.1
-    max_iter: 100
-    svd: 64
-  features: hashing
-  features_level:
-    log2_features: 16
   layer: augmented
-  id: g1-small-gbm-hashing-augmented-3da0ee
+  id: g2-linear-svm-tfidf-char-augmented-74b2e6
 - model: linear-svm
   model_level:
     C: 0.5
+  features: tfidf-char
+  features_level:
+    ngram_max: 7
+  layer: raw
+  id: g2-linear-svm-tfidf-char-raw-a9342d
+- model: linear-svm
+  model_level:
+    C: 2.0
+  features: tfidf-char
+  features_level:
+    ngram_max: 6
+  layer: raw
+  id: g2-linear-svm-tfidf-char-raw-2cc767
+- model: linear-svm
+  model_level:
+    C: 2.0
   features: hashing
   features_level:
     log2_features: 16
+  layer: raw
+  id: g2-linear-svm-hashing-raw-630e99
+- model: linear-svm
+  model_level:
+    C: 0.1
+  features: tfidf-char
+  features_level:
+    ngram_max: 6
+  layer: raw
+  id: g2-linear-svm-tfidf-char-raw-5b6c06
+- model: linear-svm
+  model_level:
+    C: 0.5
+  features: tfidf-char
+  features_level:
+    ngram_max: 6
   layer: dedup
-  id: g1-linear-svm-hashing-dedup-e3614f
+  id: g2-linear-svm-tfidf-char-dedup-88028d
+- model: linear-svm
+  model_level:
+    C: 2.0
+  features: tfidf-char
+  features_level:
+    ngram_max: 4
+  layer: raw
+  id: g2-linear-svm-tfidf-char-raw-e1e26f
+- model: linear-svm
+  model_level:
+    C: 2.0
+  features: tfidf-char
+  features_level:
+    ngram_max: 5
+  layer: dedup
+  id: g2-linear-svm-tfidf-char-dedup-f38513
+- model: linear-svm
+  model_level:
+    C: 8.0
+  features: tfidf-char
+  features_level:
+    ngram_max: 5
+  layer: raw
+  id: g2-linear-svm-tfidf-char-raw-6f4b28
+- model: nb
+  model_level:
+    alpha: 0.5
+  features: tfidf-char
+  features_level:
+    ngram_max: 6
+  layer: augmented
+  id: g2-nb-tfidf-char-augmented-529243
+- model: nb
+  model_level:
+    alpha: 0.5
+  features: tfidf-char
+  features_level:
+    ngram_max: 6
+  layer: dedup
+  id: g2-nb-tfidf-char-dedup-1efc2d
 parent_top:
-- g0-linear-svm-tfidf-char-raw-813c27
-- g0-logreg-tfidf-char-augmented-d494cc
-- g0-logreg-tfidf-word-raw-5dea5c
-minted_levels: []
-generated_ts: '2026-11-19T09:06:09Z'
+- g1-linear-svm-tfidf-char-raw-0d65ff
+- g1-linear-svm-tfidf-char-raw-3c9489
+- g1-linear-svm-tfidf-char-raw-0d65ff
+minted_levels:
+- factor: model.linear-svm.C
+  new_level: 8.0
+- factor: features.tfidf-char.ngram_max
+  new_level: 7
+generated_ts: '2026-11-19T20:37:42Z'
