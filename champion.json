@@ -1,0 +1,24 @@
+{
+  "family": "tier1-classifiers-steward",
+  "cell_id": "g0-linear-svm-tfidf-char-raw-813c27",
+  "gen": 0,
+  "model": "linear-svm",
+  "model_level": {
+    "C": 0.5
+  },
+  "features": "tfidf-char",
+  "features_level": {
+    "ngram_max": 5
+  },
+  "layer": "raw",
+  "macro_f1": 0.962,
+  "macro_f1_std": 0.0515,
+  "acc": 0.9643,
+  "gold_acc": null,
+  "n_rows": 69,
+  "data_sha": "f763a4a1919fada1273850c5d9828e765628538a",
+  "commit": "f6b1b8a594e356101f9ffabb60d436877b563fee",
+  "node": "actions",
+  "promoted_ts": "2026-11-19T09:06:09Z",
+  "history": []
+}
